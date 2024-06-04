@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  transmission:
+    image: haugene/transmission-openvpn
+    container_name: transmission
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    restart: unless-stopped
+    environment:
+      - OPENVPN_PROVIDER=custom
+      - OPENVPN_CONFIG=vpn
+      - OPENVPN_PASSWORD=
+      - OPENVPN_USERNAME=
+      - LOCAL_NETWORK=192.168.1.0/24
+      - TRANSMISSION_DOWNLOAD_DIR=/downloads/complete
+      - TRANSMISSION_INCOMPLETE_DIR=/downloads/incomplete
+      - TRANSMISSION_RPC_USERNAME=
+      - TRANSMISSION_RPC_PASSWORD=
+    volumes:
+      - /path/transmission/config:/config
+      - /mnt/downloads:/downloads
+
+
+    ports:
+      - "9091:9091"
+      - "22847:51413"
+      - "22847:51413/udp"
