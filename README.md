@@ -1,1 +1,1 @@
-This is a full automatic mediaserver 
+## Full Media Server 98% Automatic Es_es
