@@ -1,1 +1,1 @@
-This in a full automatic mediaserver 
+This is a full automatic mediaserver 
